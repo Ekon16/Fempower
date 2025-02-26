@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FemPower - La belleza comienza por dentro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <!-- Logo centrado -->
+      <div class="logo"></div>
+
+      
+      <!-- Menú de navegación debajo del logo -->
+      <nav class="main-nav">
+        <ul class="menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li><a href="blog.html">Blog / Consejos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="cuenta.html">Mi Cuenta</a></li>
+        </ul>
+      </nav>
+      <!-- Botón hamburger para móviles -->
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+  
+  
+
+  <!-- Slider -->
+  <section class="slider">
+    <div class="slides">
+      <div class="slide active">
+        <img src="src/SLIDER 1.png" alt="Slide 1">
+        <div class="slide-caption">
+          <h1>La belleza comienza por dentro</h1>
+          <p>Descubre tu verdadera esencia</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="src/SLIDER 2.png" alt="Slide 2">
+        <div class="slide-caption">
+          <h1>Empodérate con FemPower</h1>
+          <p>Productos que inspiran y transforman</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="src/SLIDER 3.png" alt="Slide 3">
+        <div class="slide-caption">
+          <h1>Cuidado Integral</h1>
+          <p>Nutre tu piel desde adentro</p>
+        </div>
+      </div>
+    </div>
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+  </section>
+
+  <!-- Buscador y Filtros -->
+  <section class="search-filters">
+    <div class="container">
+      <input type="text" id="searchInput" placeholder="Buscar productos...">
+      <select id="filterSelect">
+        <option value="">Todos los productos</option>
+        <option value="mujeres">Productos para Mujeres</option>
+      </select>
+      <button id="searchBtn" class="btn">Buscar</button>
+    </div>
+  </section>
+
+  <!-- Listado de Productos -->
+<section class="product-list">
+  <div class="container">
+    <h2>Productos Destacados</h2>
+    <div id="productList" class="products">
+      <!-- Ejemplo de tarjeta de producto -->
+      <div class="product" data-category="mujeres">
+        <img src="radiance-revive-thumb.jpg" alt="Radiance Revive">
+        <h3>Radiance Revive</h3>
+        <p>Revitaliza la piel y elimina manchas.</p>
+        <button class="btn view-product" onclick="window.location.href='product-template.html#radiance-revive'">
+          Ver Producto
+        </button>
+      </div>
+      <!-- Agrega las demás tarjetas de producto de forma similar -->
+    </div>
+  </div>
+</section>
+
+
+  <!-- Modal para Detalle del Producto -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modalBody">
+        <!-- Aquí se mostrará la información del producto seleccionado -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 FemPower. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
