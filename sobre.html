@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sobre Nosotros - FemPower</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container header-container">
       <div class="logo"></div>
@@ -19,6 +18,7 @@
           <li><a href="blog.html">Blog / Consejos</a></li>
           <li><a href="contacto.html">Contacto</a></li>
           <li><a href="cuenta.html">Mi Cuenta</a></li>
+          <li><a href="cart.html">Carrito (<span id="cart-count">0</span>)</a></li>
         </ul>
       </nav>
       <div class="hamburger">
@@ -29,7 +29,6 @@
     </div>
   </header>
 
-  <!-- Sección principal -->
   <section class="about-section">
     <div class="container">
       <h1>Sobre Nosotros</h1>
@@ -38,7 +37,6 @@
     </div>
   </section>
 
-  <!-- Misión y Visión -->
   <section class="mission-vision">
     <div class="container">
       <div class="mission">
@@ -52,29 +50,52 @@
     </div>
   </section>
 
-  <!-- Equipo -->
   <section class="team">
     <div class="container">
       <h2>Nuestro Equipo</h2>
       <div class="team-members">
         <div class="team-member">
-          <img src="src/team1.jpg" alt="María López">
-          <h3>María López</h3>
+          <img src="src/Adriana.jpeg" alt="Adriana" />
+          <h3>Adriana Silva</h3>
           <p>Fundadora y CEO</p>
         </div>
         <div class="team-member">
-          <img src="src/team2.jpg" alt="Ana Pérez">
-          <h3>Ana Pérez</h3>
+          <img src="src/Carlota.jpeg" alt="Carlota" />
+          <h3>Carlota Jurado</h3>
+          <p>Fundadora y CEO</p>
+        </div>
+        <div class="team-member">
+          <img src="src/Elena.jpeg" alt="Elena" />
+          <h3>Elena Jiménez </h3>
+          <p>Fundadora y CEO</p>
+        </div>
+        <div class="team-member">
+          <img src="src/Sofia.jpeg" alt="Sofia" />
+          <h3>Sofía Azula</h3>
           <p>Directora de Marketing</p>
         </div>
         <div class="team-member">
-          <img src="src/team3.jpg" alt="Carla Torres">
-          <h3>Carla Torres</h3>
+          <img src="src/Shandel.jpeg" alt="Shandel" />
+          <h3>Shandel Washing</h3>
           <p>Especialista en Belleza</p>
         </div>
       </div>
     </div>
   </section>
+
+   <!-- Mejora 1: Integración del chatbot de IA (Gemma) en una burbuja flotante de chat -->
+   <button id="chatButton" class="chat-button" aria-label="Abrir chat de soporte">💬</button>
+   <div id="chatWindow" class="chat-window">
+     <div class="chat-header">
+       Chat de Soporte
+       <button id="chatClose" class="chat-close" aria-label="Cerrar chat">&times;</button>
+     </div>
+     <div id="chatMessages" class="chat-messages"><!-- Mensajes del chat --></div>
+     <div class="chat-input-area">
+       <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." aria-label="Escribir mensaje de chat">
+       <button id="sendBtn" class="send-btn">Enviar</button>
+     </div>
+   </div>
 
   <footer>
     <div class="container">

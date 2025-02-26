@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blog y Consejos - FemPower</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container header-container">
       <div class="logo"></div>
@@ -19,6 +18,7 @@
           <li><a href="blog.html" class="active">Blog / Consejos</a></li>
           <li><a href="contacto.html">Contacto</a></li>
           <li><a href="cuenta.html">Mi Cuenta</a></li>
+          <li><a href="cart.html">Carrito (<span id="cart-count">0</span>)</a></li>
         </ul>
       </nav>
       <div class="hamburger">
@@ -29,12 +29,11 @@
     </div>
   </header>
 
-  <!-- Blog Section -->
   <section class="blog-section">
     <div class="container">
       <h2>Blog y Consejos</h2>
       <div class="blog-container">
-        <!-- Sidebar -->
+        <!-- Sidebar de categorías y artículos recientes -->
         <aside class="blog-sidebar">
           <h3>Categorías</h3>
           <ul>
@@ -50,21 +49,20 @@
             <li><a href="#">Consejos para fortalecer la confianza en ti misma</a></li>
           </ul>
         </aside>
-        
-        <!-- Blog Posts -->
+        <!-- Lista de posts -->
         <div class="blog-posts">
           <article class="post">
-            <img src="src/blog1.jpg" alt="Rutina de cuidado de la piel">
+            <img src="src/RUTINA-CUIDADO-DE-LA-PIEL.jpg" alt="Rutina de cuidado de la piel" />
             <h3><a href="#">Rutina de Cuidado de la Piel</a></h3>
             <p>Descubre cómo mejorar tu rutina diaria para una piel sana y luminosa.</p>
           </article>
           <article class="post">
-            <img src="src/blog2.jpg" alt="Alimentos para la piel">
+            <img src="src/Comida.jpg" alt="Alimentos para la piel" />
             <h3><a href="#">Alimentos para una Piel Radiante</a></h3>
             <p>Conoce los mejores alimentos que nutren tu piel desde adentro.</p>
           </article>
           <article class="post">
-            <img src="src/blog3.jpg" alt="Confianza en ti misma">
+            <img src="src/Confianza.jpg" alt="Confianza en ti misma" />
             <h3><a href="#">Cómo Fortalecer tu Confianza</a></h3>
             <p>Consejos prácticos para empoderarte y fortalecer tu autoestima.</p>
           </article>
@@ -72,6 +70,20 @@
       </div>
     </div>
   </section>
+
+   <!-- Mejora 1: Integración del chatbot de IA (Gemma) en una burbuja flotante de chat -->
+   <button id="chatButton" class="chat-button" aria-label="Abrir chat de soporte">💬</button>
+   <div id="chatWindow" class="chat-window">
+     <div class="chat-header">
+       Chat de Soporte
+       <button id="chatClose" class="chat-close" aria-label="Cerrar chat">&times;</button>
+     </div>
+     <div id="chatMessages" class="chat-messages"><!-- Mensajes del chat --></div>
+     <div class="chat-input-area">
+       <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." aria-label="Escribir mensaje de chat">
+       <button id="sendBtn" class="send-btn">Enviar</button>
+     </div>
+   </div>
 
   <footer>
     <div class="container">

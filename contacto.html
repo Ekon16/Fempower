@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto - FemPower</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo"></div>
+      <nav class="main-nav">
+        <ul class="menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li><a href="blog.html">Blog / Consejos</a></li>
+          <li><a href="contacto.html" class="active">Contacto</a></li>
+          <li><a href="cuenta.html">Mi Cuenta</a></li>
+          <li><a href="cart.html">Carrito (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <section class="contact-section">
+    <div class="container">
+      <h1>Contacto</h1>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="contactName">Nombre:</label>
+          <input type="text" id="contactName" required />
+        </div>
+        <div class="form-group">
+          <label for="contactEmail">Email:</label>
+          <input type="email" id="contactEmail" required />
+        </div>
+        <div class="form-group">
+          <label for="contactMessage">Mensaje:</label>
+          <textarea id="contactMessage" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn">Enviar Mensaje</button>
+      </form>
+      <p id="contactFeedback" style="display:none; color: green; font-weight: bold; margin-top: 10px;">
+        ¡Mensaje enviado! Nos pondremos en contacto pronto.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 FemPower. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
