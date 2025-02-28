@@ -1,253 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const productContainer2 = document.getElementById("productContainer2");
-  if (!productContainer2) return;
-
-  // Obtener el ID del producto desde la URL
-  const prodId = window.location.hash.substring(1);
-  if (!prodId) {
-    productContainer2.innerHTML = "<p>No se ha especificado ningún producto.</p>";
-    return;
-  }
-
-  // Abrir la base de datos IndexedDB
-  const request = indexedDB.open("fempowerDB", 1);
-  request.onsuccess = function (event) {
-    const db = event.target.result;
-    const tx = db.transaction("products", "readonly");
-    const store = tx.objectStore("products");
-    const req = store.get(prodId);
-
-    req.onsuccess = function () {
-      const product = req.result;
-      if (!product) {
-        productContainer2.innerHTML = "<p>Producto no encontrado.</p>";
-        return;
-      }
-
-      // Renderizar los detalles del producto, asegurando que la descripción se muestra
-      productContainer2.innerHTML = `
-        <div class="product-detail-container">
-          <div class="product-image">
-            <img src="${product.image}" alt="${product.name}">
-          </div>
-          <div class="product-info">
-            <h1>${product.name}</h1>
-            <h3>Descripción:</h3>
-            <p>${product.description}</p>
-            <h3>Problema que resuelve:</h3>
-            <p>${product.problem}</p>
-            <h3>Composición:</h3>
-            <p>${product.composition}</p>
-            <h3>Beneficio:</h3>
-            <p>${product.benefit}</p>
-            <p class="price">${product.price}</p>
-            <button class="btn add-to-cart" data-id="${product.id}">Agregar al carrito</button>
-          </div>
-        </div>
-      `;
-
-      // Funcionalidad de agregar al carrito
-      document.querySelector(".add-to-cart").addEventListener("click", function () {
-        addToCart(product.id);
-        alert("Producto añadido al carrito.");
-      });
-    };
-  };
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("searchInput");
-  const filterSelect = document.getElementById("filterSelect");
-  const searchBtn = document.getElementById("searchBtn");
-  const productListEl = document.getElementById("productList");
-
-  // Verifica que existe la lista de productos en el DOM
-  if (!productListEl) return;
-
-  // Simulación de base de datos con los productos iniciales
-  const products = [
-    {
-      id: "radiance-revive",
-      name: "Radiance Revive",
-      description: "Dale un resplandor natural a tu piel con Radiance Revive, la fórmula ideal para combatir la piel opaca, seca y con imperfecciones. Enriquecida con Vitamina A y C, junto con un exclusivo blend de Colágeno y Ácido Hialurónico, esta poderosa combinación ayuda a revitalizar la piel desde el interior, mejorando la hidratación y reduciendo manchas. Disfruta de una piel más luminosa, uniforme y radiante todos los días.",
-      problem: "Piel opaca, reseca, con manchas e imperfecciones.",
-      composition: "Vitamina A (principal) + Vitamina C + Blend de Colágeno y Ácido Hialurónico.",
-      benefit: "Revitaliza la piel, ayuda a eliminar manchas y devuelve el brillo natural.",
-      price: "$49.99",
-      image: "src/radiance-revive.png",
-      category: "Piel",
-      stock: 50
-    },
-    {
-      id: "anti-aging-shield",
-      name: "Anti-Aging Shield",
-      description: "El tiempo avanza, pero tu piel no tiene que reflejarlo. Anti-Aging Shield es la solución definitiva contra arrugas, líneas de expresión y el daño causado por el estrés ambiental. Gracias a la acción antioxidante de Vitamina E, Vitamina C, Coenzima Q10 y Resveratrol, protege y repara la piel desde el interior, combatiendo los signos del envejecimiento y restaurando su firmeza. Vive cada día con una piel más joven y saludable.",
-      problem: "Aparición de arrugas, líneas de expresión y daño por estrés ambiental.",
-      composition: "Vitamina E (principal) + Vitamina C + Coenzima Q10 + Resveratrol.",
-      benefit: "Protege y repara la piel, reduciendo los signos del envejecimiento.",
-      price: "$59.99",
-      image: "src/anti-aging-shield.png",
-      category: "Piel",
-      stock: 50
-    },
-    {
-      id: "firm-elastic",
-      name: "Firm & Elastic",
-      description: "Recupera la firmeza y elasticidad de tu piel con Firm & Elastic, un suplemento diseñado para fortalecer la estructura cutánea y prevenir la flacidez. Con Vitamina C, Colágeno y Ácido Hialurónico, esta fórmula única mejora la tonicidad de la piel, proporcionándole una hidratación profunda y un aspecto rejuvenecido. Ideal para quienes buscan una piel más firme, suave y radiante.",
-      problem: "Pérdida de firmeza y elasticidad en la piel.",
-      composition: "Vitamina C (principal) + Colágeno + Ácido Hialurónico.",
-      benefit: "Refuerza la estructura cutánea, aumentando la firmeza y tonificando la piel.",
-      price: "$39.99",
-      image: "src/firm-elastic.png",
-      category: "Piel",
-      stock: 50
-    },
-    {
-      id: "clear-complexion",
-      name: "Clear Complexion",
-      description: "Despídete del acné y el exceso de grasa con Clear Complexion. Especialmente formulado con Vitamina B3 (Niacina), Zinc y Extracto de Té Verde, este potente suplemento equilibra la producción de sebo, reduce la inflamación y previene la aparición de brotes. Si buscas una piel más limpia, uniforme y sin imperfecciones, esta es la solución natural que estabas esperando.",
-      problem: "Brotes de acné y exceso de sebo.",
-      composition: "Vitamina B3 (Niacina) (principal) + Zinc + Extracto de Té Verde.",
-      benefit: "Regula la producción de sebo, reduce la inflamación y ayuda a mantener una piel equilibrada.",
-      price: "$44.99",
-      image: "src/clear-complexion.png",
-      category: "Salud",
-      stock: 50
-    },
-    {
-      id: "detox-glow",
-      name: "Detox Glow",
-      description: "Renueva tu piel desde adentro con Detox Glow, la fórmula que desintoxica y elimina impurezas acumuladas en la piel. Gracias a la combinación de Vitamina C, Ácido Alfa Lipoico y Probióticos, este suplemento estimula la renovación celular y aporta luminosidad, brindándote un cutis fresco y saludable.",
-      problem: "Piel sin vitalidad y opaca por la acumulación de toxinas.",
-      composition: "Vitamina C (principal) + Ácido Alfa Lipoico + Probióticos.",
-      benefit: "Desintoxica y estimula la renovación celular, aportando luminosidad.",
-      price: "$54.99",
-      image: "src/detox-glow.png",
-      category: "Hormonas",
-      stock: 50
-    },
-    {
-      id: "vital-balance",
-      name: "Vital Balance",
-      description: "Encuentra el equilibrio perfecto con Vital Balance, el suplemento diseñado para aumentar la energía y estabilizar el bienestar hormonal. Con Vitamina B6, B12, Ginseng y Omega-3, esta fórmula te ayuda a combatir la fatiga, mantener la vitalidad y mejorar el estado de ánimo, reflejando bienestar en todo tu cuerpo.",
-      problem: "Falta de energía y desequilibrios hormonales que afectan la apariencia.",
-      composition: "Vitamina B6 (principal) + Vitamina B12 + Ginseng + Omega-3.",
-      benefit: "Aumenta la vitalidad, ayuda a equilibrar las hormonas y mejora el aspecto general.",
-      price: "$64.99",
-      image: "src/vital-balance.png",
-      category: "Cabello",
-      stock: 50
-    },
-    {
-      id: "beauty-boost",
-      name: "Beauty Boost",
-      description: "Brilla desde la raíz con Beauty Boost, el secreto para un cabello más fuerte y unas uñas saludables. Formulado con Biotina (Vitamina B7), Vitamina D y Colágeno, este suplemento fortalece la fibra capilar, reduce la caída y estimula el crecimiento del cabello, al mismo tiempo que nutre y endurece las uñas.",
-      problem: "Cabello sin brillo y uñas quebradizas.",
-      composition: "Biotina (Vitamina B7) (principal) + Vitamina D + Colágeno.",
-      benefit: "Fortalece el cabello y las uñas, promoviendo un crecimiento sano.",
-      price: "$34.99",
-      image: "src/beauty-boost.png",
-      category: "Cabello",
-      stock: 50
-    },
-    {
-      id: "calm-restore",
-      name: "Calm & Restore",
-      description: "El estrés no solo afecta tu mente, también impacta tu piel. Calm & Restore es la solución ideal para pieles sensibles o reactivas, formulada con Vitamina B5, Magnesio y Extracto de Manzanilla. Esta combinación reduce la inflamación, calma irritaciones y ayuda a restaurar el equilibrio natural de la piel.",
-      problem: "Estrés que provoca irritación y brotes en la piel.",
-      composition: "Vitamina B5 (principal) + Magnesio + Extracto de Manzanilla.",
-      benefit: "Calma y reduce la irritación cutánea, ayudando a mitigar los efectos del estrés.",
-      price: "$29.99",
-      image: "src/calm-restore.png",
-      category: "Hormonas",
-      stock: 50
-    },
-    {
-      id: "immune-radiance",
-      name: "Immune Radiance",
-      description: "Refuerza tu piel y tu sistema inmunológico con Immune Radiance, una combinación perfecta de Vitamina D, Vitamina C y Probióticos. Este suplemento potencia las defensas naturales de tu cuerpo, promoviendo una piel más saludable, luminosa y protegida contra agresiones externas.",
-      problem: "Piel apagada y sin brillo debido a un sistema inmunológico debilitado.",
-      composition: "Vitamina D (principal) + Vitamina C + Probióticos.",
-      benefit: "Refuerza el sistema inmunológico y devuelve luminosidad a la piel.",
-      price: "$39.99",
-      image: "src/immune-radiance.png",
-      category: "Hormonas",
-      stock: 50
-    }
-  ];
-  
-
-  // Función para renderizar los productos filtrados en la página
-  function renderProducts(filterCategory = "", searchTerm = "") {
-    productListEl.innerHTML = ""; // Limpiar lista
-    const filtered = products.filter(product => {
-      const matchesCategory = !filterCategory || product.category === filterCategory;
-      const matchesSearch =
-        !searchTerm ||
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.benefit.toLowerCase().includes(searchTerm.toLowerCase());
-
-      return matchesCategory && matchesSearch;
-    });
-
-    if (filtered.length === 0) {
-      productListEl.innerHTML = "<p>No se encontraron productos.</p>";
-      return;
-    }
-
-    filtered.forEach(product => {
-      const card = document.createElement("div");
-      card.classList.add("product");
-      card.innerHTML = `
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p>${product.benefit}</p>
-        <p class="price">${product.price}</p>
-        <button class="btn view-product" data-id="${product.id}">Ver Producto</button>
-      `;
-      productListEl.appendChild(card);
-    });
-  }
-
-  // Cargar todos los productos inicialmente
-  renderProducts();
-
-  // Ejecutar búsqueda al hacer clic en el botón
-  searchBtn.addEventListener("click", function () {
-    const searchTerm = searchInput.value.trim();
-    const selectedCategory = filterSelect.value;
-    renderProducts(selectedCategory, searchTerm);
-  });
-
-  // Permitir búsqueda presionando Enter
-  searchInput.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      const searchTerm = searchInput.value.trim();
-      const selectedCategory = filterSelect.value;
-      renderProducts(selectedCategory, searchTerm);
-    }
-  });
-
-  // Filtrar automáticamente al cambiar la categoría
-  filterSelect.addEventListener("change", function () {
-    const searchTerm = searchInput.value.trim();
-    const selectedCategory = filterSelect.value;
-    renderProducts(selectedCategory, searchTerm);
-  });
-
-  // Manejar clic en "Ver Producto" y redirigir a la página de detalles
-  productListEl.addEventListener("click", function (e) {
-    const btn = e.target.closest(".view-product");
-    if (btn) {
-      const prodId = btn.getAttribute("data-id");
-      window.location.href = `product-template.html#${prodId}`;
-    }
-  });
-});
-
-
-
 // Al cargar el DOM, inicializamos la aplicación
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -333,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: "radiance-revive",
         name: "Radiance Revive",
-        description: "Dale un resplandor natural a tu piel con Radiance Revive, la fórmula ideal para combatir la piel opaca, seca y con imperfecciones. Enriquecida con Vitamina A y C, junto con un exclusivo blend de Colágeno y Ácido Hialurónico, esta poderosa combinación ayuda a revitalizar la piel desde el interior, mejorando la hidratación y reduciendo manchas. Disfruta de una piel más luminosa, uniforme y radiante todos los días.",
         problem: "Piel opaca, reseca, con manchas e imperfecciones.",
         composition: "Vitamina A (principal) + Vitamina C + Blend de Colágeno y Ácido Hialurónico.",
         benefit: "Revitaliza la piel, ayuda a eliminar manchas y devuelve el brillo natural.",
@@ -345,7 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: "anti-aging-shield",
         name: "Anti-Aging Shield",
-        description: "El tiempo avanza, pero tu piel no tiene que reflejarlo. Anti-Aging Shield es la solución definitiva contra arrugas, líneas de expresión y el daño causado por el estrés ambiental. Gracias a la acción antioxidante de Vitamina E, Vitamina C, Coenzima Q10 y Resveratrol, protege y repara la piel desde el interior, combatiendo los signos del envejecimiento y restaurando su firmeza. Vive cada día con una piel más joven y saludable.",
         problem: "Aparición de arrugas, líneas de expresión y daño por estrés ambiental.",
         composition: "Vitamina E (principal) + Vitamina C + Coenzima Q10 + Resveratrol.",
         benefit: "Protege y repara la piel, reduciendo los signos del envejecimiento.",
@@ -357,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: "firm-elastic",
         name: "Firm & Elastic",
-        description: "Recupera la firmeza y elasticidad de tu piel con Firm & Elastic, un suplemento diseñado para fortalecer la estructura cutánea y prevenir la flacidez. Con Vitamina C, Colágeno y Ácido Hialurónico, esta fórmula única mejora la tonicidad de la piel, proporcionándole una hidratación profunda y un aspecto rejuvenecido. Ideal para quienes buscan una piel más firme, suave y radiante.",
         problem: "Pérdida de firmeza y elasticidad en la piel.",
         composition: "Vitamina C (principal) + Colágeno + Ácido Hialurónico.",
         benefit: "Refuerza la estructura cutánea, aumentando la firmeza y tonificando la piel.",
@@ -369,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: "clear-complexion",
         name: "Clear Complexion",
-        description: "Despídete del acné y el exceso de grasa con Clear Complexion. Especialmente formulado con Vitamina B3 (Niacina), Zinc y Extracto de Té Verde, este potente suplemento equilibra la producción de sebo, reduce la inflamación y previene la aparición de brotes. Si buscas una piel más limpia, uniforme y sin imperfecciones, esta es la solución natural que estabas esperando.",
         problem: "Brotes de acné y exceso de sebo.",
         composition: "Vitamina B3 (Niacina) (principal) + Zinc + Extracto de Té Verde.",
         benefit: "Regula la producción de sebo, reduce la inflamación y ayuda a mantener una piel equilibrada.",
@@ -381,7 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: "detox-glow",
         name: "Detox Glow",
-        description: "Renueva tu piel desde adentro con Detox Glow, la fórmula que desintoxica y elimina impurezas acumuladas en la piel. Gracias a la combinación de Vitamina C, Ácido Alfa Lipoico y Probióticos, este suplemento estimula la renovación celular y aporta luminosidad, brindándote un cutis fresco y saludable.",
         problem: "Piel sin vitalidad y opaca por la acumulación de toxinas.",
         composition: "Vitamina C (principal) + Ácido Alfa Lipoico + Probióticos.",
         benefit: "Desintoxica y estimula la renovación celular, aportando luminosidad.",
@@ -393,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: "vital-balance",
         name: "Vital Balance",
-        description: "Encuentra el equilibrio perfecto con Vital Balance, el suplemento diseñado para aumentar la energía y estabilizar el bienestar hormonal. Con Vitamina B6, B12, Ginseng y Omega-3, esta fórmula te ayuda a combatir la fatiga, mantener la vitalidad y mejorar el estado de ánimo, reflejando bienestar en todo tu cuerpo.",
         problem: "Falta de energía y desequilibrios hormonales que afectan la apariencia.",
         composition: "Vitamina B6 (principal) + Vitamina B12 + Ginseng + Omega-3.",
         benefit: "Aumenta la vitalidad, ayuda a equilibrar las hormonas y mejora el aspecto general.",
@@ -405,7 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: "beauty-boost",
         name: "Beauty Boost",
-        description: "Brilla desde la raíz con Beauty Boost, el secreto para un cabello más fuerte y unas uñas saludables. Formulado con Biotina (Vitamina B7), Vitamina D y Colágeno, este suplemento fortalece la fibra capilar, reduce la caída y estimula el crecimiento del cabello, al mismo tiempo que nutre y endurece las uñas.",
         problem: "Cabello sin brillo y uñas quebradizas.",
         composition: "Biotina (Vitamina B7) (principal) + Vitamina D + Colágeno.",
         benefit: "Fortalece el cabello y las uñas, promoviendo un crecimiento sano.",
@@ -417,10 +160,9 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: "calm-restore",
         name: "Calm & Restore",
-        description: "El estrés no solo afecta tu mente, también impacta tu piel. Calm & Restore es la solución ideal para pieles sensibles o reactivas, formulada con Vitamina B5, Magnesio y Extracto de Manzanilla. Esta combinación reduce la inflamación, calma irritaciones y ayuda a restaurar el equilibrio natural de la piel.",
         problem: "Estrés que provoca irritación y brotes en la piel.",
         composition: "Vitamina B5 (principal) + Magnesio + Extracto de Manzanilla.",
-        benefit: "Calma y reduce la irritación cutánea, ayudando a mitigar los efectos del estrés.",
+        benefit: "Calma la irritación y mitiga los efectos del estrés.",
         price: "$29.99",
         image: "src/calm-restore.png",
         category: "Piel",
@@ -429,17 +171,15 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: "immune-radiance",
         name: "Immune Radiance",
-        description: "Refuerza tu piel y tu sistema inmunológico con Immune Radiance, una combinación perfecta de Vitamina D, Vitamina C y Probióticos. Este suplemento potencia las defensas naturales de tu cuerpo, promoviendo una piel más saludable, luminosa y protegida contra agresiones externas.",
         problem: "Piel apagada y sin brillo debido a un sistema inmunológico debilitado.",
         composition: "Vitamina D (principal) + Vitamina C + Probióticos.",
-        benefit: "Refuerza el sistema inmunológico y devuelve luminosidad a la piel.",
+        benefit: "Refuerza el sistema inmunológico y devuelve la luminosidad a la piel.",
         price: "$39.99",
         image: "src/immune-radiance.png",
         category: "Piel",
         stock: 50
       }
     ];
-    
     initialProducts.forEach(prod => productStore.add(prod));
   };
   request.onsuccess = (e) => {
@@ -606,7 +346,6 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
               <div class="product-info">
                 <h1>${product.name}</h1>
-                <p>${product.description}</p>
                 <h3>Problema:</h3>
                 <p>${product.problem}</p>
                 <h3>Composición:</h3>
@@ -686,90 +425,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
     
-function loadProductDetail() {
-  const productContainer = document.getElementById("productContainer");
-  if (!productContainer) return;
-  const prodId = window.location.hash.substring(1);
-  if (!prodId) {
-    productContainer.innerHTML = "<p>No se especificó ningún producto.</p>";
-    return;
-  }
-
-  // Obtener el producto específico de IndexedDB
-  const tx = db.transaction("products", "readonly");
-  const store = tx.objectStore("products");
-  const req = store.get(prodId);
-  
-  req.onsuccess = () => {
-    const product = req.result;
-    if (!product) {
-      productContainer.innerHTML = "<p>Producto no encontrado.</p>";
-      return;
-    }
-
-    // Construir HTML del detalle del producto
-    let galleryHTML = "";
-    // Si el producto tiene una galería de imágenes adicionales
-    if (product.gallery && product.gallery.length) {
-      galleryHTML = `
-        <div class="product-gallery">
-          ${product.gallery.map(img => `<img src="${img}" alt="${product.name}" class="gallery-thumb">`).join('')}
-        </div>
-      `;
-    }
-
-    productContainer.innerHTML = `
-      <div class="product-detail-container">
-        <div class="product-image">
-          <img src="${product.image}" alt="${product.name}" id="mainProductImage">
-          ${galleryHTML}
-        </div>
-        <div class="product-info">
-          <h1>${product.name}</h1>
-          <p class="product-description">${product.description}</p> <!-- 🔥 Descripción añadida -->
-          <h3>Problema:</h3>
-          <p>${product.problem}</p>
-          <h3>Composición:</h3>
-          <p>${product.composition}</p>
-          <h3>Beneficio:</h3>
-          <p>${product.benefit}</p>
-          <p class="price">${product.price}</p>
-          <div class="quantity-container">
-            <label for="quantity">Cantidad</label>
-            <input type="number" id="quantity" value="1" min="1" />
-          </div>
-          <div class="buttons-container">
-            <button class="btn add-to-cart">Agregar al carrito</button>
-            <button class="btn buy-now">Comprar ahora</button>
-          </div>
-        </div>
-      </div>
-    `;
-
-    // Permitir cambiar la imagen principal al hacer clic en miniaturas
-    const thumbs = productContainer.querySelectorAll(".gallery-thumb");
-    const mainImg = productContainer.querySelector("#mainProductImage");
-    thumbs.forEach(thumb => {
-      thumb.addEventListener("click", () => {
-        mainImg.src = thumb.src;
-      });
-    });
-
-    // Manejar clic en "Agregar al carrito" y "Comprar ahora"
-    productContainer.addEventListener("click", (e) => {
-      if (e.target.classList.contains("add-to-cart") || e.target.classList.contains("buy-now")) {
-        const quantityInput = document.getElementById("quantity");
-        const qty = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
-        addItemToCart(product.id, qty);
-        alert("Producto añadido al carrito.");
-        updateCartCount();
-        if (e.target.classList.contains("buy-now")) {
-          window.location.href = "cart.html";
-        }
-      }
-    });
-  };
-}
 
     /** Cargar detalle de un producto en la página de producto **/
     function loadProductDetail() {
@@ -807,8 +462,8 @@ function loadProductDetail() {
               ${galleryHTML}
             </div>
             <div class="product-info">
+            
               <h1>${product.name}</h1>
-              <p>${product.description}</p>
               <h3>Problema:</h3>
               <p>${product.problem}</p>
               <h3>Composición:</h3>
@@ -984,7 +639,7 @@ function loadProductDetail() {
             const code = promoInput.value.trim().toUpperCase();
             if (code === "MUJERADIANTE") {
               appliedDiscount = 0.25;  // 10% de descuento
-              promoMsg.textContent = "¡Descuento del 10% aplicado!";
+              promoMsg.textContent = "¡Descuento del 25% aplicado!";
               promoMsg.style.color = "green";
             } else if (code) {
               appliedDiscount = 0;
@@ -1517,5 +1172,3 @@ document.addEventListener("DOMContentLoaded", function() {
     reviewForm.reset();
   });
 });
-
-
