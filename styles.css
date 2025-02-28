@@ -2082,3 +2082,99 @@ footer {
     font-size: 18px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Contenedor del artículo */
+.article-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabecera del artículo */
+.article-header {
+  text-align: center;
+  border-bottom: 2px solid #a259ff;
+  padding-bottom: 10px;
+}
+
+.article-header h1 {
+  font-size: 2rem;
+  color: #a259ff;
+}
+
+.article-header .author {
+  font-size: 1rem;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* Contenido del artículo */
+.article-content {
+  padding-top: 20px;
+}
+
+.article-content h2 {
+  color: #a259ff;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.article-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Listas */
+.article-content ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.article-content ul li {
+  font-size: 1.1rem;
+  padding: 5px 0;
+}
+
+/* Beneficios con icono */
+.benefits li {
+  font-weight: bold;
+  color: #ff4081;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .article-container {
+      padding: 15px;
+  }
+
+  .article-header h1 {
+      font-size: 1.8rem;
+  }
+
+  .article-content h2 {
+      font-size: 1.3rem;
+  }
+}
