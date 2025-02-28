@@ -982,8 +982,8 @@ function loadProductDetail() {
         if (applyBtn && promoInput) {
           applyBtn.addEventListener("click", () => {
             const code = promoInput.value.trim().toUpperCase();
-            if (code === "PROMO10") {
-              appliedDiscount = 0.10;  // 10% de descuento
+            if (code === "MUJERADIANTE") {
+              appliedDiscount = 0.25;  // 10% de descuento
               promoMsg.textContent = "¡Descuento del 10% aplicado!";
               promoMsg.style.color = "green";
             } else if (code) {
