@@ -72,19 +72,20 @@
     </div>
   </header>
 
-  <!-- Buscador y Filtro por categoría -->
-  <section class="search-filters">
+   <!-- Buscador y Filtros -->
+   <section class="search-filters">
     <div class="container">
       <input type="text" id="searchInput" placeholder="Buscar productos..." />
       <select id="filterSelect">
         <option value="">Todos los productos</option>
-        <option value="mujeres">Productos para Mujeres</option>
-        <!-- Se podrían añadir más categorías -->
+        <option value="Cabello">Cuidado de la piel y anti-edad</option>
+        <option value="Piel">Equilibrio y bienestar interno</option>
+        <option value="Salud">Belleza específica</option>
       </select>
       <button id="searchBtn" class="btn">Buscar</button>
     </div>
   </section>
-
+  
   <!-- Lista de Productos -->
   <section class="product-list">
     <div class="container">
@@ -172,7 +173,7 @@
 
 <script>
     const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
-    const API_KEY = "AIzaSyA2cs89e0P_M24LM6Ua009QMzkrgys_rG0AIzaSyA2cs89e0P_M24LM6Ua009QMzkrgys_rG0"; // Sustituye por tu clave de API
+    const API_KEY = "AIzaSyA2cs89e0P_M24LM6Ua009QMzkrgys_rG0"; // Sustituye por tu clave de API
     
     const PROMPT = "Responde con frases cortas de máximo 15 palabras. Solo contesta basandote en los uno de los siguientes productos (Actua como una vendedora de vitaminas para mujeres): \n" +
     "Radiance Revive: revitaliza piel opaca con Vitamina A y C. \n" +
