@@ -1,3 +1,91 @@
+/** Cargar lista de productos y permitir filtrado **/
+function loadProductList() {
+  const productListEl = document.getElementById("productList");
+  if (!productListEl) return;
+
+  // Obtener todos los productos de IndexedDB
+  const tx = db.transaction("products", "readonly");
+  const store = tx.objectStore("products");
+  const getReq = store.getAll();
+
+  getReq.onsuccess = () => {
+      let products = getReq.result;
+
+      function renderProducts(filterCategory = "", searchTerm = "") {
+          productListEl.innerHTML = "";  // Limpiar lista antes de renderizar
+
+          const filtered = products.filter(product => {
+              const matchesCategory = !filterCategory || product.category === filterCategory;
+              const matchesSearch = !searchTerm || 
+                  product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                  product.benefit.toLowerCase().includes(searchTerm.toLowerCase());
+              return matchesCategory && matchesSearch;
+          });
+
+          if (filtered.length === 0) {
+              productListEl.innerHTML = "<p>No se encontraron productos.</p>";
+              return;
+          }
+
+          filtered.forEach(product => {
+              const card = document.createElement("div");
+              card.classList.add("product");
+              card.innerHTML = `
+                  <img src="${product.image}" alt="${product.name}">
+                  <h3>${product.name}</h3>
+                  <p>${product.benefit}</p>
+                  <button class="btn view-product" data-id="${product.id}">Ver Producto</button>
+              `;
+              productListEl.appendChild(card);
+          });
+      }
+
+      // Renderizar todos los productos al inicio
+      renderProducts();
+
+      // Configurar filtrado por categoría y búsqueda
+      const searchInput = document.getElementById("searchInput");
+      const filterSelect = document.getElementById("filterSelect");
+      const searchBtn = document.getElementById("searchBtn");
+
+      if (searchBtn && searchInput && filterSelect) {
+          searchBtn.addEventListener("click", () => {
+              const term = searchInput.value.trim();
+              const category = filterSelect.value;
+              renderProducts(category, term);
+          });
+
+          // También activar búsqueda cuando el usuario presione Enter en el input
+          searchInput.addEventListener("keypress", (e) => {
+              if (e.key === "Enter") {
+                  const term = searchInput.value.trim();
+                  const category = filterSelect.value;
+                  renderProducts(category, term);
+              }
+          });
+
+          // Activar filtrado al cambiar la categoría
+          filterSelect.addEventListener("change", () => {
+              const term = searchInput.value.trim();
+              const category = filterSelect.value;
+              renderProducts(category, term);
+          });
+      }
+
+      // Manejar clic en botón "Ver Producto"
+      productListEl.addEventListener("click", (e) => {
+          const btn = e.target.closest(".view-product");
+          if (btn) {
+              const prodId = btn.getAttribute("data-id");
+              window.location.href = `product-template.html#${prodId}`;
+          }
+      });
+  };
+}
+
+
+
+
 // Al cargar el DOM, inicializamos la aplicación
 document.addEventListener("DOMContentLoaded", () => {
 
