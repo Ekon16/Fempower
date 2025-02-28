@@ -83,103 +83,113 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: "radiance-revive",
         name: "Radiance Revive",
+        description: "Dale un resplandor natural a tu piel con Radiance Revive, la fórmula ideal para combatir la piel opaca, seca y con imperfecciones. Enriquecida con Vitamina A y C, junto con un exclusivo blend de Colágeno y Ácido Hialurónico, esta poderosa combinación ayuda a revitalizar la piel desde el interior, mejorando la hidratación y reduciendo manchas. Disfruta de una piel más luminosa, uniforme y radiante todos los días.",
         problem: "Piel opaca, reseca, con manchas e imperfecciones.",
         composition: "Vitamina A (principal) + Vitamina C + Blend de Colágeno y Ácido Hialurónico.",
         benefit: "Revitaliza la piel, ayuda a eliminar manchas y devuelve el brillo natural.",
         price: "$49.99",
         image: "src/radiance-revive.png",
-        category: "mujeres",
+        category: "Piel",
         stock: 50
       },
       {
         id: "anti-aging-shield",
         name: "Anti-Aging Shield",
+        description: "El tiempo avanza, pero tu piel no tiene que reflejarlo. Anti-Aging Shield es la solución definitiva contra arrugas, líneas de expresión y el daño causado por el estrés ambiental. Gracias a la acción antioxidante de Vitamina E, Vitamina C, Coenzima Q10 y Resveratrol, protege y repara la piel desde el interior, combatiendo los signos del envejecimiento y restaurando su firmeza. Vive cada día con una piel más joven y saludable.",
         problem: "Aparición de arrugas, líneas de expresión y daño por estrés ambiental.",
         composition: "Vitamina E (principal) + Vitamina C + Coenzima Q10 + Resveratrol.",
         benefit: "Protege y repara la piel, reduciendo los signos del envejecimiento.",
         price: "$59.99",
         image: "src/anti-aging-shield.png",
-        category: "mujeres",
+        category: "Piel",
         stock: 50
       },
       {
         id: "firm-elastic",
         name: "Firm & Elastic",
+        description: "Recupera la firmeza y elasticidad de tu piel con Firm & Elastic, un suplemento diseñado para fortalecer la estructura cutánea y prevenir la flacidez. Con Vitamina C, Colágeno y Ácido Hialurónico, esta fórmula única mejora la tonicidad de la piel, proporcionándole una hidratación profunda y un aspecto rejuvenecido. Ideal para quienes buscan una piel más firme, suave y radiante.",
         problem: "Pérdida de firmeza y elasticidad en la piel.",
         composition: "Vitamina C (principal) + Colágeno + Ácido Hialurónico.",
         benefit: "Refuerza la estructura cutánea, aumentando la firmeza y tonificando la piel.",
         price: "$39.99",
         image: "src/firm-elastic.png",
-        category: "mujeres",
+        category: "Piel",
         stock: 50
       },
       {
         id: "clear-complexion",
         name: "Clear Complexion",
+        description: "Despídete del acné y el exceso de grasa con Clear Complexion. Especialmente formulado con Vitamina B3 (Niacina), Zinc y Extracto de Té Verde, este potente suplemento equilibra la producción de sebo, reduce la inflamación y previene la aparición de brotes. Si buscas una piel más limpia, uniforme y sin imperfecciones, esta es la solución natural que estabas esperando.",
         problem: "Brotes de acné y exceso de sebo.",
         composition: "Vitamina B3 (Niacina) (principal) + Zinc + Extracto de Té Verde.",
         benefit: "Regula la producción de sebo, reduce la inflamación y ayuda a mantener una piel equilibrada.",
         price: "$44.99",
         image: "src/clear-complexion.png",
-        category: "mujeres",
+        category: "Salud",
         stock: 50
       },
       {
         id: "detox-glow",
         name: "Detox Glow",
+        description: "Renueva tu piel desde adentro con Detox Glow, la fórmula que desintoxica y elimina impurezas acumuladas en la piel. Gracias a la combinación de Vitamina C, Ácido Alfa Lipoico y Probióticos, este suplemento estimula la renovación celular y aporta luminosidad, brindándote un cutis fresco y saludable.",
         problem: "Piel sin vitalidad y opaca por la acumulación de toxinas.",
         composition: "Vitamina C (principal) + Ácido Alfa Lipoico + Probióticos.",
         benefit: "Desintoxica y estimula la renovación celular, aportando luminosidad.",
         price: "$54.99",
         image: "src/detox-glow.png",
-        category: "mujeres",
+        category: "Piel",
         stock: 50
       },
       {
         id: "vital-balance",
         name: "Vital Balance",
+        description: "Encuentra el equilibrio perfecto con Vital Balance, el suplemento diseñado para aumentar la energía y estabilizar el bienestar hormonal. Con Vitamina B6, B12, Ginseng y Omega-3, esta fórmula te ayuda a combatir la fatiga, mantener la vitalidad y mejorar el estado de ánimo, reflejando bienestar en todo tu cuerpo.",
         problem: "Falta de energía y desequilibrios hormonales que afectan la apariencia.",
         composition: "Vitamina B6 (principal) + Vitamina B12 + Ginseng + Omega-3.",
         benefit: "Aumenta la vitalidad, ayuda a equilibrar las hormonas y mejora el aspecto general.",
         price: "$64.99",
         image: "src/vital-balance.png",
-        category: "mujeres",
+        category: "Hormonas",
         stock: 50
       },
       {
         id: "beauty-boost",
         name: "Beauty Boost",
+        description: "Brilla desde la raíz con Beauty Boost, el secreto para un cabello más fuerte y unas uñas saludables. Formulado con Biotina (Vitamina B7), Vitamina D y Colágeno, este suplemento fortalece la fibra capilar, reduce la caída y estimula el crecimiento del cabello, al mismo tiempo que nutre y endurece las uñas.",
         problem: "Cabello sin brillo y uñas quebradizas.",
         composition: "Biotina (Vitamina B7) (principal) + Vitamina D + Colágeno.",
         benefit: "Fortalece el cabello y las uñas, promoviendo un crecimiento sano.",
         price: "$34.99",
         image: "src/beauty-boost.png",
-        category: "mujeres",
+        category: "Cabello",
         stock: 50
       },
       {
         id: "calm-restore",
         name: "Calm & Restore",
+        description: "El estrés no solo afecta tu mente, también impacta tu piel. Calm & Restore es la solución ideal para pieles sensibles o reactivas, formulada con Vitamina B5, Magnesio y Extracto de Manzanilla. Esta combinación reduce la inflamación, calma irritaciones y ayuda a restaurar el equilibrio natural de la piel.",
         problem: "Estrés que provoca irritación y brotes en la piel.",
         composition: "Vitamina B5 (principal) + Magnesio + Extracto de Manzanilla.",
-        benefit: "Calma la irritación y mitiga los efectos del estrés.",
+        benefit: "Calma y reduce la irritación cutánea, ayudando a mitigar los efectos del estrés.",
         price: "$29.99",
         image: "src/calm-restore.png",
-        category: "mujeres",
+        category: "Piel",
         stock: 50
       },
       {
         id: "immune-radiance",
         name: "Immune Radiance",
+        description: "Refuerza tu piel y tu sistema inmunológico con Immune Radiance, una combinación perfecta de Vitamina D, Vitamina C y Probióticos. Este suplemento potencia las defensas naturales de tu cuerpo, promoviendo una piel más saludable, luminosa y protegida contra agresiones externas.",
         problem: "Piel apagada y sin brillo debido a un sistema inmunológico debilitado.",
         composition: "Vitamina D (principal) + Vitamina C + Probióticos.",
-        benefit: "Refuerza el sistema inmunológico y devuelve la luminosidad a la piel.",
+        benefit: "Refuerza el sistema inmunológico y devuelve luminosidad a la piel.",
         price: "$39.99",
         image: "src/immune-radiance.png",
-        category: "mujeres",
+        category: "Piel",
         stock: 50
       }
     ];
+    
     initialProducts.forEach(prod => productStore.add(prod));
   };
   request.onsuccess = (e) => {
@@ -301,6 +311,216 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     }
 
+    document.addEventListener("DOMContentLoaded", function() {
+      const productContainer = document.getElementById("productContainer");
+      if (!productContainer) return;
+    
+      // Obtener el ID del producto desde la URL
+      const prodId = window.location.hash.substring(1);
+      if (!prodId) {
+        productContainer.innerHTML = "<p>No se ha especificado ningún producto.</p>";
+        return;
+      }
+    
+      // Abrimos la base de datos IndexedDB
+      const request = indexedDB.open("fempowerDB", 1);
+      request.onsuccess = function(event) {
+        const db = event.target.result;
+        const tx = db.transaction("products", "readonly");
+        const store = tx.objectStore("products");
+        const req = store.get(prodId);
+    
+        req.onsuccess = function() {
+          const product = req.result;
+          if (!product) {
+            productContainer.innerHTML = "<p>Producto no encontrado.</p>";
+            return;
+          }
+    
+          // Generar la galería de imágenes (si tiene más de una imagen)
+          let galleryHTML = "";
+          if (product.gallery && product.gallery.length) {
+            galleryHTML = `
+              <div class="product-gallery">
+                ${product.gallery.map(img => `<img src="${img}" alt="${product.name}" class="gallery-thumb">`).join('')}
+              </div>
+            `;
+          }
+    
+          // Mostrar los detalles del producto
+          productContainer.innerHTML = `
+            <div class="product-detail-container">
+              <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" id="mainProductImage">
+                ${galleryHTML}
+              </div>
+              <div class="product-info">
+                <h1>${product.name}</h1>
+                <p>${product.description}</p>
+                <h3>Problema:</h3>
+                <p>${product.problem}</p>
+                <h3>Composición:</h3>
+                <p>${product.composition}</p>
+                <h3>Beneficio:</h3>
+                <p>${product.benefit}</p>
+                <p class="price">${product.price}</p>
+                <div class="quantity-container">
+                  <label for="quantity">Cantidad</label>
+                  <input type="number" id="quantity" value="1" min="1" />
+                </div>
+                <div class="buttons-container">
+                  <button class="btn add-to-cart" data-id="${product.id}">Agregar al carrito</button>
+                  <button class="btn buy-now">Comprar ahora</button>
+                </div>
+              </div>
+            </div>
+          `;
+    
+          // Manejar la funcionalidad de agregar al carrito
+          document.querySelector(".add-to-cart").addEventListener("click", () => {
+            const quantity = parseInt(document.getElementById("quantity").value) || 1;
+            addToCart(product.id, quantity);
+          });
+    
+          // Manejar la compra inmediata
+          document.querySelector(".buy-now").addEventListener("click", () => {
+            const quantity = parseInt(document.getElementById("quantity").value) || 1;
+            addToCart(product.id, quantity);
+            window.location.href = "cart.html";
+          });
+    
+          // Permitir cambiar la imagen principal al hacer clic en miniaturas
+          document.querySelectorAll(".gallery-thumb").forEach(thumb => {
+            thumb.addEventListener("click", () => {
+              document.getElementById("mainProductImage").src = thumb.src;
+            });
+          });
+        };
+      };
+    
+      // Función para agregar al carrito en IndexedDB
+      function addToCart(productId, quantity) {
+        const request = indexedDB.open("fempowerDB", 1);
+        request.onsuccess = function(event) {
+          const db = event.target.result;
+          const tx = db.transaction("cart", "readwrite");
+          const store = tx.objectStore("cart");
+          
+          store.get(productId).onsuccess = function(event) {
+            const existingItem = event.target.result;
+            if (existingItem) {
+              existingItem.quantity += quantity;
+              store.put(existingItem);
+            } else {
+              store.add({ id: productId, quantity: quantity });
+            }
+            updateCartCount();
+            alert("Producto agregado al carrito.");
+          };
+        };
+      }
+    
+      // Actualizar contador del carrito en el header
+      function updateCartCount() {
+        const request = indexedDB.open("fempowerDB", 1);
+        request.onsuccess = function(event) {
+          const db = event.target.result;
+          const tx = db.transaction("cart", "readonly");
+          const store = tx.objectStore("cart");
+          store.getAll().onsuccess = function(event) {
+            const cartItems = event.target.result;
+            const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById("cart-count").textContent = totalCount;
+          };
+        };
+      }
+    });
+    
+function loadProductDetail() {
+  const productContainer = document.getElementById("productContainer");
+  if (!productContainer) return;
+  const prodId = window.location.hash.substring(1);
+  if (!prodId) {
+    productContainer.innerHTML = "<p>No se especificó ningún producto.</p>";
+    return;
+  }
+
+  // Obtener el producto específico de IndexedDB
+  const tx = db.transaction("products", "readonly");
+  const store = tx.objectStore("products");
+  const req = store.get(prodId);
+  
+  req.onsuccess = () => {
+    const product = req.result;
+    if (!product) {
+      productContainer.innerHTML = "<p>Producto no encontrado.</p>";
+      return;
+    }
+
+    // Construir HTML del detalle del producto
+    let galleryHTML = "";
+    // Si el producto tiene una galería de imágenes adicionales
+    if (product.gallery && product.gallery.length) {
+      galleryHTML = `
+        <div class="product-gallery">
+          ${product.gallery.map(img => `<img src="${img}" alt="${product.name}" class="gallery-thumb">`).join('')}
+        </div>
+      `;
+    }
+
+    productContainer.innerHTML = `
+      <div class="product-detail-container">
+        <div class="product-image">
+          <img src="${product.image}" alt="${product.name}" id="mainProductImage">
+          ${galleryHTML}
+        </div>
+        <div class="product-info">
+          <h1>${product.name}</h1>
+          <p class="product-description">${product.description}</p> <!-- 🔥 Descripción añadida -->
+          <h3>Problema:</h3>
+          <p>${product.problem}</p>
+          <h3>Composición:</h3>
+          <p>${product.composition}</p>
+          <h3>Beneficio:</h3>
+          <p>${product.benefit}</p>
+          <p class="price">${product.price}</p>
+          <div class="quantity-container">
+            <label for="quantity">Cantidad</label>
+            <input type="number" id="quantity" value="1" min="1" />
+          </div>
+          <div class="buttons-container">
+            <button class="btn add-to-cart">Agregar al carrito</button>
+            <button class="btn buy-now">Comprar ahora</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Permitir cambiar la imagen principal al hacer clic en miniaturas
+    const thumbs = productContainer.querySelectorAll(".gallery-thumb");
+    const mainImg = productContainer.querySelector("#mainProductImage");
+    thumbs.forEach(thumb => {
+      thumb.addEventListener("click", () => {
+        mainImg.src = thumb.src;
+      });
+    });
+
+    // Manejar clic en "Agregar al carrito" y "Comprar ahora"
+    productContainer.addEventListener("click", (e) => {
+      if (e.target.classList.contains("add-to-cart") || e.target.classList.contains("buy-now")) {
+        const quantityInput = document.getElementById("quantity");
+        const qty = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+        addItemToCart(product.id, qty);
+        alert("Producto añadido al carrito.");
+        updateCartCount();
+        if (e.target.classList.contains("buy-now")) {
+          window.location.href = "cart.html";
+        }
+      }
+    });
+  };
+}
+
     /** Cargar detalle de un producto en la página de producto **/
     function loadProductDetail() {
       const productContainer = document.getElementById("productContainer");
@@ -338,6 +558,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="product-info">
               <h1>${product.name}</h1>
+              <p>${product.description}</p>
               <h3>Problema:</h3>
               <p>${product.problem}</p>
               <h3>Composición:</h3>
@@ -863,70 +1084,188 @@ document.addEventListener("DOMContentLoaded", () => {
   request.onerror = () => {
     console.error("Error al abrir la base de datos.");
   };
-
-
-   /* === CHATBOT (Atención al Cliente IA) === */
-   const chatButton = document.getElementById("chatButton");
-   const chatWindow = document.getElementById("chatWindow");
-   const chatClose = document.getElementById("chatClose");
-   const chatInput = document.getElementById("chatInput");
-   const sendBtn = document.getElementById("sendBtn");
-   const chatMessages = document.getElementById("chatMessages");
-   if (chatButton && chatWindow) {
-     chatButton.addEventListener("click", () => {
-       chatWindow.style.display = "flex";
-       chatButton.style.display = "none";
-       chatInput.focus();
-     });
-     chatClose.addEventListener("click", () => {
-       chatWindow.style.display = "none";
-       chatButton.style.display = "block";
-     });
-     // Función auxiliar para agregar mensajes al chat
-     function addMessage(content, sender) {
-       const msgDiv = document.createElement("div");
-       msgDiv.classList.add("message", sender);
-       msgDiv.textContent = content;
-       chatMessages.appendChild(msgDiv);
-       chatMessages.scrollTop = chatMessages.scrollHeight;
-     }
-     // Mejora 1: Respuestas automáticas basadas en palabras clave sobre productos/soporte
-     function handleBotResponse(userMsg) {
-       const msg = userMsg.toLowerCase();
-       let reply = "Lo siento, solo puedo responder preguntas relacionadas con nuestros productos y soporte técnico.";
-       if (msg.includes("precio") || msg.includes("coste") || msg.includes("cuesta")) {
-         reply = "Nuestros precios varían según el producto. ¿Hay alguno en especial que te interese?";
-       } else if (msg.includes("envio") || msg.includes("envío") || msg.includes("entrega")) {
-         reply = "Ofrecemos envío gratuito en pedidos superiores a $50. Los envíos suelen tardar de 3 a 5 días hábiles.";
-       } else if (msg.includes("garantia") || msg.includes("garantía") || msg.includes("devoluci")) {
-         reply = "Todos nuestros productos cuentan con una garantía de satisfacción de 30 días. Si no estás satisfecha, puedes devolver el producto en ese periodo.";
-       } else if (msg.includes("ingrediente") || msg.includes("ingredientes") || msg.includes("composición")) {
-         reply = "Nuestros suplementos contienen ingredientes naturales y vitaminas. Puedes consultar la composición en la página de cada producto.";
-       } else if (msg.includes("uso") || msg.includes("utilizar") || msg.includes("tomar")) {
-         reply = "Cada producto tiene instrucciones específicas de uso. Por ejemplo, Radiance Revive se toma una vez al día con la comida.";
-       } else if (msg.includes("soporte") || msg.includes("ayuda") || msg.includes("contacto")) {
-         reply = "Claro, estoy aquí para ayudarte. ¿En qué puedo asistirte hoy?";
-       }
-       // Simular tiempo de respuesta de la IA
-       setTimeout(() => {
-         addMessage(reply, "bot");
-       }, 1000);
-     }
-     // Enviar mensaje al hacer clic en el botón o presionar Enter
-     sendBtn.addEventListener("click", () => {
-       const message = chatInput.value.trim();
-       if (message !== "") {
-         addMessage(message, "user");
-         chatInput.value = "";
-         handleBotResponse(message);
-       }
-     });
-     chatInput.addEventListener("keydown", (e) => {
-       if (e.key === "Enter") {
-         e.preventDefault();
-         sendBtn.click();
-       }
-     });
-   } 
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  /* === MENÚ HAMBURGUESA === */
+  const hamburger = document.querySelector(".hamburger");
+  const mobileMenu = document.querySelector(".mobile-menu");
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener("click", function() {
+      mobileMenu.classList.toggle("active");
+      hamburger.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".mobile-menu .submenu > a").forEach(submenu => {
+      submenu.addEventListener("click", function(e) {
+        e.preventDefault();
+        this.parentElement.classList.toggle("active");
+      });
+    });
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const newsletterForm = document.getElementById("newsletter-form");
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = this.querySelector("input").value.trim();
+
+      if (email) {
+        alert("¡Gracias por suscribirte! 🎉");
+        this.reset();
+      } else {
+        alert("Por favor, introduce un correo válido.");
+      }
+    });
+  }
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const promoModal = document.getElementById("promoModal");
+  const closeBtn = promoModal.querySelector(".close");
+  const closeButton = promoModal.querySelector(".close-btn");
+
+  // Mostrar el popup después de 2 segundos al cargar la página
+  setTimeout(() => {
+    promoModal.style.display = "flex";
+  }, 2000);
+
+  // Función para cerrar el popup
+  function closePopup() {
+    promoModal.style.display = "none";
+  }
+
+  closeBtn.addEventListener("click", closePopup);
+  closeButton.addEventListener("click", closePopup);
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const subscribeButton = document.querySelector(".newsletter button");
+  const subscriptionModal = document.getElementById("subscriptionModal");
+  const closeModal = subscriptionModal.querySelector(".close");
+
+  // Asegurar que el formulario NO se muestre automáticamente al cargar la página
+  subscriptionModal.style.display = "none";
+
+  // Mostrar el formulario cuando se haga clic en "Suscribirme"
+  subscribeButton.addEventListener("click", function(e) {
+    e.preventDefault();
+    subscriptionModal.style.display = "flex";
+  });
+
+  // Cerrar el formulario cuando se haga clic en la "X"
+  closeModal.addEventListener("click", function() {
+    subscriptionModal.style.display = "none";
+  });
+
+  // Cerrar modal al hacer clic fuera del formulario
+  window.addEventListener("click", function(e) {
+    if (e.target === subscriptionModal) {
+      subscriptionModal.style.display = "none";
+    }
+  });
+
+  // Manejo del envío del formulario
+  const subscriptionForm = document.getElementById("subscriptionForm");
+
+  subscriptionForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Obtener datos del formulario
+    const name = document.getElementById("name").value;
+    const surname = document.getElementById("surname").value;
+    const dob = document.getElementById("dob").value;
+    const frequency = document.querySelector('input[name="frequency"]:checked').value;
+    const termsAccepted = document.getElementById("terms").checked;
+    const newsletterAccepted = document.getElementById("newsletter").checked;
+
+    // Obtener intereses seleccionados
+    const selectedInterests = [];
+    document.querySelectorAll('input[name="interests"]:checked').forEach((checkbox) => {
+      selectedInterests.push(checkbox.value);
+    });
+
+    if (!termsAccepted) {
+      alert("Debes aceptar los términos y condiciones para suscribirte.");
+      return;
+    }
+
+    // Simular el almacenamiento en LocalStorage
+    const subscriberData = {
+      name,
+      surname,
+      dob,
+      interests: selectedInterests,
+      frequency,
+      newsletterAccepted,
+    };
+
+    localStorage.setItem("subscriberData", JSON.stringify(subscriberData));
+
+    alert("¡Gracias por suscribirte! 🎉");
+
+    // Cerrar el modal después de suscribirse
+    subscriptionModal.style.display = "none";
+  });
+
+  /* === POPUP DE PROMOCIÓN === */
+  const promoModal = document.getElementById("promoModal");
+  const promoCloseBtn = promoModal.querySelector(".close");
+  const promoCloseButton = promoModal.querySelector(".close-btn");
+
+  // Mostrar el popup de promoción solo una vez por sesión
+  if (!sessionStorage.getItem("promoShown")) {
+    setTimeout(() => {
+      promoModal.style.display = "flex";
+      sessionStorage.setItem("promoShown", "true");
+    }, 2000);
+  }
+
+  // Cerrar el popup de promoción
+  function closePromoPopup() {
+    promoModal.style.display = "none";
+  }
+
+  promoCloseBtn.addEventListener("click", closePromoPopup);
+  promoCloseButton.addEventListener("click", closePromoPopup);
+});
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const reviewForm = document.getElementById("reviewForm");
+
+  reviewForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
+    const product = document.getElementById("product").value;
+    const message = document.getElementById("message").value;
+
+    const newReview = document.createElement("div");
+    newReview.classList.add("review");
+    newReview.innerHTML = `
+      <h3>📝 ${name} - ${age} años <span>(${product})</span></h3>
+      <p>"${message}"</p>
+    `;
+
+    document.querySelector(".testimonials").appendChild(newReview);
+
+    alert("¡Gracias por compartir tu experiencia! 🎉");
+    reviewForm.reset();
+  });
+});
+
 
